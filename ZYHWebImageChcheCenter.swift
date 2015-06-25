@@ -35,7 +35,15 @@ class ZYHWebImageChcheCenter: NSObject {
         chchePath=chchePath.stringByAppendingFormat("/%@", newURL)
         return chchePath
     }
-    
+    //删除缓存
+    class func removeAllCache(){
+        var chchePath=NSHomeDirectory().stringByAppendingString("/Library/Caches/MyCache")
+        var fileManager:NSFileManager=NSFileManager.defaultManager()
+        if fileManager.fileExistsAtPath(chchePath) {
+            fileManager.removeItemAtPath(chchePath, error: nil)
+        }
+        
+    }
     class func stringToZYHString(str:NSString)->NSString{
         var newStr:NSMutableString=NSMutableString()
         for var i:NSInteger=0; i < str.length; i++ {
